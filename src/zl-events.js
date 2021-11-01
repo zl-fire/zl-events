@@ -1,13 +1,3 @@
-# js之观察者模式（发布订阅）实现
-
-## 说明
-
-1. 定义一个class，表示我们的观察者模块实现
-2. class中声明四个基本方法：订阅事件 发布事件 取消订阅 取消所有订阅
-3. class中声明一个事件对象集合，结构为一个对象，有许多键值对。
-   
-## 核心实现
-```js
 class ZL_Events {
 
     // 事件对象集合,设置为静态的，方便不同的示例共享
@@ -61,37 +51,3 @@ class ZL_Events {
     }
 }
 export default ZL_Events;
-
-```
-## 使用示例
-```js
-// 引入和实例化
-const ZL_Events=require("./zl-events");
-const event=new ZL_Events();
-
-// 订阅hello事件
-event.on("hello",function(params){
-   console.log("=====e1=========",params)
-})
-
-event.on("hello",function(params){
-   console.log("=======e2=======",params)
-})
-
-function fn3(params){
-    console.log("=====e12=========",params)
- }
-event.on("hello",fn3)
-
-// 发布hello事件
-event.emit("hello",999)
-
-// 取消对hello的第三个订阅行为
-event.cancel("hello",fn3);
-
-```
-
-
-##一篇好文章
-https://www.cnblogs.com/tugenhua0707/p/4100876.html 
-

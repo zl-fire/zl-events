@@ -1,0 +1,22 @@
+{
+  "name": "zl-events",
+  "version": "1.0.0",
+  "description": "## 说明",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pak": "rollup src/main.js --file index.js --format umd --name zl-nodefs",
+    "tsc": "tsc -d --allowJS index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zl-fire/zl-events.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zl-fire/zl-events/issues"
+  },
+  "homepage": "https://github.com/zl-fire/zl-events#readme"
+}
