@@ -110,5 +110,6 @@ event.emit("hello",999); //这时就只会执行两个订阅回调了
 
 ## 一些相关文章
 https://www.cnblogs.com/tugenhua0707/p/4100876.html 
+
 https://www.jianshu.com/p/e751d0ef4557
 
