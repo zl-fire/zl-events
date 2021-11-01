@@ -20,4 +20,10 @@ event.on("hello",fn3)
 event.emit("hello",999)
 
 // 取消对hello的第三个订阅
+console.log("=====ZL_Events=========",ZL_Events) //三个订阅
 event.cancel("hello",fn3);
+console.log("=====ZL_Events=========",ZL_Events) //两个订阅
+
+
+// 再次发布hello事件
+event.emit("hello",999); //这时就只会执行两个回调了
