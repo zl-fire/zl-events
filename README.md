@@ -66,7 +66,7 @@ export default ZL_Events;
 ## 使用示例
 ```js
 // 引入和实例化
-const ZL_Events=require("./zl-events");
+const ZL_Events=require("zl-events");
 const event=new ZL_Events();
 
 // 订阅hello事件
@@ -89,9 +89,24 @@ event.emit("hello",999)
 // 取消对hello的第三个订阅行为
 event.cancel("hello",fn3);
 
+// 再次发布hello事件
+event.emit("hello",999)
+
 ```
+## 观察者模式的优点与缺点
+
+**优点**
+1. 事件上的解耦，
+2. 对象之间的解耦
+既可用于异步编程中，也可以用帮助我们完成更松耦合的代码编写。
+
+**缺点**
+1. 创建订阅者本身要消耗一定的时间和内存
+2. 当订阅一个消息时，也许此消息并没有发生，但这个订阅者会始终存在内存中。
+3. 观察者模式弱化了对象之间的联系，这本是好事情，但如果过度使用，对象与对象之间的联系也会被隐藏的很深，会导致项目的难以跟踪维护和理解。
 
 
-##一篇好文章
+## 一些相关文章
 https://www.cnblogs.com/tugenhua0707/p/4100876.html 
+https://www.jianshu.com/p/e751d0ef4557
 
