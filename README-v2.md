@@ -103,10 +103,6 @@ export default ZL_Events;
 const ZL_Events=require("zl-events");
 const event=new ZL_Events();
 
-// 引入和实例化
-const ZL_Events = require("./index.js");
-const event = new ZL_Events();
-
 // 订阅hello
 event.on({
    //事件名

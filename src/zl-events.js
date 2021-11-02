@@ -1,12 +1,4 @@
 class ZL_Events {
-    // 事件对象集合,设置为静态的，方便不同的示例共享
-    static listenObj = {
-        // 键为事件名，值为对象数组，包含了这个事件名的所有订阅函数和说明信息
-        // "eventName": [{ callback, notes, time: new Date().toLocaleString() }],，
-    };
-    // 用来存储一些全局数据,格式: store.key=val;
-    static store = {};
-
     // 订阅事件(每次订阅都往这个事件名对应的数组中添加一个回调函数元素)
     on(params) {
         // 对对象参数进行解构
@@ -34,7 +26,7 @@ class ZL_Events {
 
     // 查询所有的事件与订阅函数.
     // type: 0 查询所有内容(默认为0)，1 查询所有的事件，2 查询具体事件名对应的所有回调 (当为2时需要传入eventName参数表示事件名)
-    queryOn(type=0, eventName) {
+    queryOn(type = 0, eventName) {
         switch (type) {
             case 0:
                 return ZL_Events.listenObj //JSON.stringify(ZL_Events.listenObj, null, 4);
@@ -84,4 +76,11 @@ class ZL_Events {
         }
     }
 }
+// 事件对象集合,设置为静态的，方便不同的示例共享
+ZL_Events.listenObj = {
+    // 键为事件名，值为对象数组，包含了这个事件名的所有订阅函数和说明信息
+    // "eventName": [{ callback, notes, time: new Date().toLocaleString() }],，
+};
+// 用来存储一些全局数据,格式: store.key=val;
+ZL_Events.store = {};
 export default ZL_Events;
