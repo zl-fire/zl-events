@@ -38,7 +38,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 if (!listenObj[eventName]) {
                     listenObj[eventName] = [obj];
                 } else {
-                    listenObj[eventName].push(obj);
+                    // 先判断下listenObj中是否已经存在相同的监听函数，如果存在就过滤
+                    // 获取当前事件所有的订阅函数
+                    var fns = listenObj[eventName].map(function (ele) {
+                        return ele.callback.toString();
+                    });
+                    var index = fns.indexOf(callback.toString());
+                    // 不存在就添加监听
+                    if (index == -1) {
+                        listenObj[eventName].push(obj);
+                    }
                 }
             }
 
@@ -67,14 +76,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             key: 'cancel',
             value: function cancel(eventName, callback) {
                 var listenObj = ZL_Events.listenObj;
-
                 if (listenObj[eventName]) {
                     // 获取当前事件所有的订阅函数
                     var fns = listenObj[eventName].map(function (ele) {
-                        return ele.callback;
+                        return ele.callback.toString();
                     });
                     // 在回调函数里面查询，找到后根据下标删除整个对象元素
-                    var index = fns.indexOf(callback);
+                    var index = fns.indexOf(callback.toString());
                     if (index !== -1) {
                         listenObj[eventName].splice(index, 1);
                     }

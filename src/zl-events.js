@@ -20,7 +20,14 @@ class ZL_Events {
             listenObj[eventName] = [obj];
         }
         else {
-            listenObj[eventName].push(obj);
+            // 先判断下listenObj中是否已经存在相同的监听函数，如果存在就过滤
+            // 获取当前事件所有的订阅函数
+            let fns = listenObj[eventName].map(ele => ele.callback.toString());
+            let index = fns.indexOf(callback.toString());
+            // 不存在就添加监听
+            if (index == -1) {
+                listenObj[eventName].push(obj);
+            }
         }
     }
 
@@ -41,12 +48,11 @@ class ZL_Events {
     // 取消订阅(每次取消订阅 都往这个事件名对应的数组中删除一个指定的回调函数元素)
     cancel(eventName, callback) {
         let listenObj = ZL_Events.listenObj;
-
         if (listenObj[eventName]) {
             // 获取当前事件所有的订阅函数
-            let fns = listenObj[eventName].map(ele => ele.callback);
+            let fns = listenObj[eventName].map(ele => ele.callback.toString());
             // 在回调函数里面查询，找到后根据下标删除整个对象元素
-            let index = fns.indexOf(callback);
+            let index = fns.indexOf(callback.toString());
             if (index !== -1) {
                 listenObj[eventName].splice(index, 1);
             }

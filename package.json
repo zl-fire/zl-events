@@ -1,11 +1,11 @@
 {
   "name": "zl-events",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "## 说明",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pak": "rollup src/main.js --file index.js --format umd --name zl-nodefs & babel index.js -o index.js ",
+    "pak": "rollup src/main.js --file index.js --format umd --name zl-nodefs && babel index.js -o index.js ",
     "tsc": "tsc -d --allowJS index.js"
   },
   "repository": {
