@@ -64,6 +64,7 @@ ZL_Events.store.msg="存储在ZL_Events.store中的信息"
   这里以一个父子组件通信作为示例
   ![1635863842277](/assets/1635863842277.jpg)
 
+注意：在vue等前端框架中，如果开启了热更新，更新了监听函数后，可能会自动的注入一个新的函数进如栈里面，最好重新刷新下页面
 
 APP组件代码
 ```js
@@ -109,13 +110,13 @@ export default {
     // 订阅hello
     event.on({
       //事件名
-      eventName: "sub",
+      eventName: "helloworld",
       //接收到事件后执行的回调函数
       callback: function (params) {
-        console.log("=======收到helloworld的推送=======", params);
+        console.log("=======收到helloworld的消息=======", params);
       },
       // 对此订阅行为的说明
-      notes: "app中监听hello事件",
+      notes: "app中监听helloworld事件",
     });
   },
   methods: {
@@ -127,6 +128,7 @@ export default {
   },
 };
 </script>
+
 
 ```
 
@@ -167,13 +169,13 @@ export default {
         console.log("=======ZL_Events.store=======", ZL_Events.store);
       },
       // 对此订阅行为的说明
-      notes: "app中监听hello事件",
+      notes: "HelloWorld中监听app事件",
     });
   },
   methods: {
     fn() {
-      // 发布hello事件
-      event.emit("sub", '来自子组件的消息');
+      // 发布helloworld事件
+      event.emit("helloworld", '来自子组件的消息');
     },
   },
 };
